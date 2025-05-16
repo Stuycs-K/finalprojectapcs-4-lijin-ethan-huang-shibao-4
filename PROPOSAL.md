@@ -2,13 +2,11 @@
 
 ## Group Members:
 
-names here.(CHANGE THIS!!!!!)
-       
+Ethan Lijin and Skylar Huang
 # IDEAS:
 
-1 statement of the problem you are solving and/or a high level description of the project. (CHANGE THIS!!!!!)
+Flappy Bird: The player is a bird that has to navigate its way through narrow pathways. We will also have pipes on the bottom and top and some obstacles. 
 
-2 statement of the problem you are solving and/or a high level description of the project. (CHANGE THIS!!!!!)
+Crossy Road: The player is a chicken that has to cross roads and avoid cars going by. 
 
-3 statement of the problem you are solving and/or a high level description of the project. (CHANGE THIS!!!!!)
-
+Candy Crush: The player has to drag different pieces of candy to make consecutive threes to eliminate the candy and get a higher score. 
