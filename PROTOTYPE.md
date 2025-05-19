@@ -15,8 +15,19 @@ We'll be using classes, constructors to initialize candies, and methods to displ
 
 # Project Design
 
-UML Diagrams and descriptions of key algorithms, classes, and how things fit together.
-
++----------------------------+
+|           Game            |
++----------------------------+
+| - board: Board            |
+| - score: Points           |
++----------------------------+
+| + setup()                 |
+| + draw()                  |
+| + mousePressed()          |
+| + resetGame()             |
+| + updateGame()            |
+| + gameOver(): boolean     |
++----------------------------+
 
 
 # Intended pacing:
