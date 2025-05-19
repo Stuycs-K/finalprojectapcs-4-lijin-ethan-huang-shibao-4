@@ -23,12 +23,16 @@ Points is updated based on match types (3, 4, 5 combos).
 Board.checkMatches()
 - Loops through all rows and columns to find sequences of 3+ matching candies.
 - Uses nested loops and Candy.equals().
+
 Board.clearMatches()
 - Sets matching tiles' candies to null.
+
 Board.dropCandies()
 - Moves all non-null candies down into empty spaces.
+
 Board.refillBoard()
 - Fills empty tiles with new Candy objects.
+
 Game.mousePressed()
 - Detects which tile is clicked, selects or swaps it.
 - After a valid move: Calls checkMatches(), clearMatches(), dropCandies(), refillBoard(), and updates Points
