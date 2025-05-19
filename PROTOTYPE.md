@@ -14,20 +14,8 @@ Minimum Viable Product: A completed initial board of randomized colored circles 
 We'll be using classes, constructors to initialize candies, and methods to display/swap them. The game grid will be represented by a 2D array where each cell holds a Candy object. There will be multiple if statements present in each method to verify if a move is valid or if the board should update each time a move is made. 
 
 # Project Design
+![Alt text](classes.png?raw=true "Classes" ) 
 
-+----------------------------+
-|           Game            |
-+----------------------------+
-| - board: Board            |
-| - score: Points           |
-+----------------------------+
-| + setup()                 |
-| + draw()                  |
-| + mousePressed()          |
-| + resetGame()             |
-| + updateGame()            |
-| + gameOver(): boolean     |
-+----------------------------+
 
 
 # Intended pacing:
