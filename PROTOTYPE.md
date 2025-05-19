@@ -15,7 +15,23 @@ We'll be using classes, constructors to initialize candies, and methods to displ
 
 # Project Design
 ![Alt text](classes.png?raw=true "Classes" ) 
+Game contains one Board and one Points object.
+Board is a grid (Tile[][]) where each Tile contains a Candy.
+Candy objects are created with random colors and types (normal, striped, etc.).
+Points is updated based on match types (3, 4, 5 combos).
 
+Board.checkMatches()
+- Loops through all rows and columns to find sequences of 3+ matching candies.
+- Uses nested loops and Candy.equals().
+Board.clearMatches()
+- Sets matching tiles' candies to null.
+Board.dropCandies()
+- Moves all non-null candies down into empty spaces.
+Board.refillBoard()
+- Fills empty tiles with new Candy objects.
+Game.mousePressed()
+- Detects which tile is clicked, selects or swaps it.
+- After a valid move: Calls checkMatches(), clearMatches(), dropCandies(), refillBoard(), and updates Points
 
 
 # Intended pacing:
