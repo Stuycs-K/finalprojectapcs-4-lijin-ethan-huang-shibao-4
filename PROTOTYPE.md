@@ -51,7 +51,8 @@ Phase 2 Candy and Tile class (5/27/2025):
 
 Phase 3 Board and Points class(5/30/2025):
 &nbsp;
-Ethan:
+
+# Ethan:
 - Board Class:
 - implement initialize
 - implement display
@@ -61,7 +62,8 @@ Ethan:
 &nbsp;
 - implement Points class
 &nbsp;
-Skylar:
+
+# Skylar:
 - Board class:
 - implement dropCandies()
 - implement refillBoard()
@@ -69,12 +71,13 @@ Skylar:
 
 Phase 4 Game file (6/4/2025):
 &nbsp;
-Skylar:
+
+# Skylar:
 - implement setup()
 - implement draw()
 - implement mousePressed()
 &nbsp;
-Ethan:
+# Ethan:
 - implement resetGame()
 - implement updateGame()
 - implement gameOver(): boolean
