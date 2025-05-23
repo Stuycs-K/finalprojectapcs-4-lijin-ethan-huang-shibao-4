@@ -39,7 +39,53 @@ Game.mousePressed()
 
 
 # Intended pacing:
+Phase 1 (5/22/2025):
+&nbsp;
+- create files with with the methods (Skylar)
+- discuss if any other new methods, classes, or instance variables are needed. 
 
-How you are breaking down the project and who is responsible for which parts.
+Phase 2 Candy and Tile class (5/27/2025):
+&nbsp;
+- Implement the candy class (Ethan)
+- Implement the tile class (Skylar)
 
-A timeline with expected completion dates of parts of the project. (CHANGE THIS!!!!!)
+Phase 3 Board and Points class(5/30/2025):
+&nbsp;
+
+## Ethan:
+- Board Class:
+- implement initialize
+- implement display
+- implement swap(t1: Tile, t2: Tile)
+- implement checkMatches(): boolean
+- implement clearMatches()
+&nbsp;
+- implement Points class
+&nbsp;
+
+## Skylar:
+- Board class:
+- implement dropCandies()
+- implement refillBoard()
+- implement hasMoves(): boolean
+
+Phase 4 Game file (6/4/2025):
+&nbsp;
+
+## Skylar:
+- implement setup()
+- implement draw()
+- implement mousePressed()
+&nbsp;
+## Ethan:
+- implement resetGame()
+- implement updateGame()
+- implement gameOver(): boolean
+
+phase 5 (6/5/2025):
+&nbsp;
+- double check everything to make sure everything is working
+- Skylar: implement win/lose conditions 
+- Ethan: implement end of game dialogue
+
+
