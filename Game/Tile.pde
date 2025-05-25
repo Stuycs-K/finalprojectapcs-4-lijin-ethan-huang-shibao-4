@@ -24,4 +24,19 @@ class Tile {
     this.candy = other.candy;
     other.candy = temp;
   }
+  
+  void display(float tileSize) {
+    float x = col * tileSize;
+    float y = row * tileSize;
+    if (isSelected) {
+      stroke(255, 0, 0);
+      strokeWeight(4);
+    } 
+    else {
+      stroke(0);
+      strokeWeight(1);
+    }
+    fill(200);
+    rect(x, y, tileSize, tileSize);
+  }
 }
