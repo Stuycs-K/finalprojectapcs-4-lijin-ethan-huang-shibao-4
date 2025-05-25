@@ -9,6 +9,8 @@ public class Candy{
 
     public void display(float x, float y){
         //width and height parameters are subject to change
+        fill(col);
+        noStroke();
         ellipse(x,y,10,10);
     }
 
