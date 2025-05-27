@@ -11,10 +11,11 @@ Minimum Viable Product: A completed initial board of randomized colored circles 
 
 # Technical Details:
 
-We'll be using classes, constructors to initialize candies, and methods to display/swap them. The game grid will be represented by a 2D array where each cell holds a Candy object. There will be multiple if statements present in each method to verify if a move is valid or if the board should update each time a move is made. 
+We'll be using classes, constructors to initialize candies, and methods to display/swap them. The game grid will be represented by a 2D array where each cell holds a Candy object. There will be multiple if statements present in each method to verify if a move is valid or if the board should update each time a move is made.
 
 # Project Design
-![Alt text](classes.png?raw=true "Classes" ) 
+~~![Alt text](classes.png?raw=true "Classes" )~~
+![Alt text](classes2.png?raw=true "Classes" )
 Game contains one Board and one Points object.
 Board is a grid (Tile[][]) where each Tile contains a Candy.
 Candy objects are created with random colors and types (normal, striped, etc.).
@@ -42,7 +43,7 @@ Game.mousePressed()
 Phase 1 (5/22/2025):
 &nbsp;
 - create files with with the methods (Skylar)
-- discuss if any other new methods, classes, or instance variables are needed. 
+- discuss if any other new methods, classes, or instance variables are needed.
 
 Phase 2 Candy and Tile class (5/27/2025):
 &nbsp;
@@ -85,7 +86,5 @@ Phase 4 Game file (6/4/2025):
 phase 5 (6/5/2025):
 &nbsp;
 - double check everything to make sure everything is working
-- Skylar: implement win/lose conditions 
+- Skylar: implement win/lose conditions
 - Ethan: implement end of game dialogue
-
-
