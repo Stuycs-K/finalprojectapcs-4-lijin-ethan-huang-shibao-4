@@ -18,6 +18,20 @@ public class Game {
     background(255);
     scoreKeeper.display(20, height - 20);
   }
+  
+  void mousePressed() {
+    if (gameOver()) {
+      return;
+    }
+    int col = int(mouseX / TILE_SIZE);
+    int row = int(mouseY / TILE_SIZE);
+    if (row >= board.rows || col >= board.cols) {
+      return;
+    }
+    Tile clicked = board.getTile(row, col);
+    
+    
+  }
 
   void resetGame(){
     scoreKeeper.reset();
@@ -35,6 +49,6 @@ public class Game {
   }
 
   boolean gameOver(){
-    
+    return !board.hasMoves();
   }
 }
