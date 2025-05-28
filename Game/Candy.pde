@@ -1,6 +1,6 @@
 public class Candy{
-    private color col;
-    private String type;
+    color col;
+    String type;
 
     public Candy(color x, String CandyKind){
         this.col = x;
@@ -16,6 +16,10 @@ public class Candy{
 
     public color getColor(){
         return this.col;
+    }
+
+    public color setColor(color x){
+        this.col = x;
     }
 
     public boolean equals(Candy c){

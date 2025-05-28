@@ -18,4 +18,16 @@ public class Game {
     background(255);
     scoreKeeper.display(20, height - 20);
   }
+
+  void resetGame(){
+
+  }
+
+  void updateGame(){
+
+  }
+
+  boolean gameOver(){
+    
+  }
 }
