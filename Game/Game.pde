@@ -29,10 +29,23 @@ public class Game {
       return;
     }
     Tile clicked = board.getTile(row, col);
-    
-    
-  }
-
+    if (selectedTile == null) {
+      selectedTile = clicked;
+      selectedTile.select();
+    }
+    else {
+      selectedTile.swap(clicked);
+      if (board.checkMatches()) {
+          updateGame();
+      }
+      else {
+        selectedTile.swap(clicked);
+      }
+    }
+    selectedTile.deselect();
+    selectedTile = null;
+   }
+   
   void resetGame(){
     scoreKeeper.reset();
     board.initialize();
