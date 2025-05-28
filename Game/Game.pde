@@ -20,11 +20,18 @@ public class Game {
   }
 
   void resetGame(){
-
+    scoreKeeper.reset();
+    board.initialize();
+    selectedTile = null;
   }
 
   void updateGame(){
-
+    while (board.checkMatches()) {
+      int cleared = board.clearMatches();
+      scoreKeeper.add(cleared * 10);
+      board.dropCandies();
+      board.fillEmpty();
+    }
   }
 
   boolean gameOver(){
