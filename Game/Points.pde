@@ -1,6 +1,10 @@
 public class Points {
   int score;
   
+  Points() {
+    score = 0;
+  }
+  
   void add(int points) {
     score += points;
   }
@@ -14,7 +18,8 @@ public class Points {
   }
   
   void display(int x, int y, float tileSize) {
-    fill(200);
-    rect(x, y, tileSize, tileSize);
+    fill(0);
+    textSize(20);
+    text("Score: " + score, x, y);
   }
 }
