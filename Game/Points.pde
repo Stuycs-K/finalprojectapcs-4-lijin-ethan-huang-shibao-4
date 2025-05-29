@@ -1,4 +1,4 @@
-public class Points {
+class Points {
   int score;
   
   Points() {

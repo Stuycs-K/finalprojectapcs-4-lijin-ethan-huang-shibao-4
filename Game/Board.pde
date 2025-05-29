@@ -24,7 +24,7 @@ class Board{
         candies[4] = new Candy(color(255,165,0), "solid"); //orange
         candies[5] = new Candy(color(128,0,128), "solid"); //purple
 
-        this.specialCandies = Candy[7]
+        this.specialCandies = Candy[7];
         candies[0] = new Candy(color(255,0,0), "striped"); //red
         candies[1] = new Candy(color(0,255,0), "striped"); //green
         candies[2] = new Candy(color(0,0,255), "striped"); //blue
@@ -38,7 +38,7 @@ class Board{
 
         //initialize array with just solids first
 
-        for (int i = 0; i < grid.length;; i++){
+        for (int i = 0; i < grid.length; i++){
             for (int j = 0; j < grid[i].length; j++){
                 int randomCandyIndex = (int) (Math.random() * 7);
                 grid[i][j] = candies[randomCandyIndex];
@@ -46,7 +46,7 @@ class Board{
         }
 
         //change some of the tiles to have 
-        for (int i = 0; i < grid.length;; i++){
+        for (int i = 0; i < grid.length; i++){
             int randomCol = (int) (Math.random() * grid.length);
             int SpecialCandyIndex = (int) (Math.random() * 8);
             int isThereSpecial = (int) (Math.random() * 11);
