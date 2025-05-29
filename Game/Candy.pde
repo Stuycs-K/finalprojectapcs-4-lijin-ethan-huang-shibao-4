@@ -1,4 +1,4 @@
-public class Candy{
+class Candy{
     color col;
     String type;
 

@@ -1,7 +1,7 @@
-public class Game {
+class Game {
   Board board;
   Points scoreKeeper;
-  Tile selectedTile
+  Tile selectedTile;
   int ROWS = 9;
   int COLS = 9;
   float TILE_SIZE = 60;
