@@ -1,10 +1,15 @@
-public class Board{
-    private Tile[][] grid;
-    private int rows;
-    private int cols;
-    private Candy[] candies;
-    private Candy[] specialCandies;
+class Board{
+    Tile[][] grid;
+    int rows;
+    int cols;
+    Candy[] candies;
+    Candy[] specialCandies;
     float tileSize;
+
+    public Board(int r, int c){
+        this.rows = r;
+        this.cols = c;
+    }
 
     //initialize candies array
     public void initialize(){
@@ -85,6 +90,20 @@ public class Board{
     }
 
     public void clearMatches(){
+        
+
+    }
+
+    public void dropCandies(){
+
+    }
+
+    public void refillBoard(){
+
+    }
+
+    public boolean hasMoves(){
+
 
     }
 
