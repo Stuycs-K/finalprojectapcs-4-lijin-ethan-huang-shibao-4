@@ -11,5 +11,7 @@ Added constructors/instance variables according to the UML diagram for the Tile 
 Edited the old UML diagram to include the specification for a class containing another, (~5 minutes) and started to implement the Points class by adding the add, getScore, and reset method. Currenly working on display (~15 minutes).
 
 ### 2024-05-28 - Starting to Implement Game Class
-Added the constructors in the Game class by calling other classes and added the setup() and draw() method to initialize the game and keep score. 
+Added the constructors in the Game class by calling other classes and added the setup() and draw() method to initialize the game and keep score.
 
+### 2024-05-29 - Added on to Game Class & Fixed Syntax Errors
+Added reset & update game in the GameClass as well as mousePressed & gameOver method. Also fixed syntax errors in general and in the Game class because it wasn't compiling.
