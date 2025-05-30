@@ -18,7 +18,7 @@ class Candy{
         return this.col;
     }
 
-    public color setColor(color x){
+    public void setColor(color x){
         this.col = x;
     }
 

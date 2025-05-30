@@ -21,6 +21,7 @@ float TILE_SIZE = 60;
   void mousePressed() {
     if (gameOver()) {
       return;
+      text("Game over.", ROWS / 2, COLS / 2);
     }
     int col = int(mouseX / TILE_SIZE);
     int row = int(mouseY / TILE_SIZE);
@@ -56,7 +57,7 @@ float TILE_SIZE = 60;
       int cleared = board.clearMatches();
       scoreKeeper.add(cleared * 10);
       board.dropCandies();
-      board.fillEmpty();
+      board.refillBoard();
     }
   }
 
