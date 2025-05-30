@@ -17,7 +17,7 @@ class Points {
     return score;
   }
   
-  void display(int x, int y, float tileSize) {
+  void display(int x, int y) {
     fill(0);
     textSize(20);
     text("Score: " + score, x, y);
