@@ -13,4 +13,7 @@ Brainstormed different candy types and colors necessary (~5 minutes) and started
 ### 2025-05-28 Board class initialize and display
 I did the initialize method where I initialized the board with solid candies and selected random tiles to have specialCandies. I also worked on the display method.
 
+### 2025-05-30 User input and refilling/clearing matches and the board
+I did the refill method, getTileAt method, and started the checkMatches method where I take user input of the user attempting to make a match. 
+
 ### 2024-01-03 - Brief description

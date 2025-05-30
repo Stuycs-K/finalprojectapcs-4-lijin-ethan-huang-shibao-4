@@ -5,6 +5,9 @@ class Board{
     Candy[] candies;
     Candy[] specialCandies;
     float tileSize;
+    int moves;
+    int boardX;
+    int boardY;
 
     public Board(int r, int c){
         this.rows = r;
@@ -13,6 +16,9 @@ class Board{
 
     //initialize candies array
     public void initialize(){
+        boardX = 50;
+        boardY = 80;
+        moves = 20;
 
         this.tileSize = tile.row * tile.col;
 
@@ -86,25 +92,76 @@ class Board{
     }
 
     public boolean checkMatches(){
-        
+        //iterate from top to bottom and left to right to check for a group of 3
+         int clickCount = 0;
+
+        if (clickCount < 2){
+            if (mousePressed){
+                if (clickCount == 0){
+                    getTileAt(mouseX, mouseY);
+                    clickCount++;
+                    if (getTileAt(mouseX, mouseY) == null){
+                        clickCount--;
+                        //probably print something to say select a valid tile
+                    }
+                }
+                else if (clickCount == 1){
+                    getTileAt(mouseX, mouseY);
+                    clickCount++;
+                    if (getTileAt(mouseX, mouseY) == null){
+                        clickCount--;
+                        //probably print something saying to select a valid tile
+                    }
+                }
+            
+        }
+
+
+    }
+
+
+    }
+
+    public Tile getTileAt(int xCord, int yCord){
+        int tileCol = (boardX - xCord) * tileSize;
+        int tileRow = (boardY - yCord) * tileSize;
+        if (tileCol < 0 || tileCol > cols || tileRow < 0 || tileRow > rows){
+            return null;
+        }
+        return grid[row][col];
     }
 
     public void clearMatches(){
-        
 
     }
 
     public void dropCandies(){
-
+        //moving all the candies above it down one column and then adding additional candies. 
     }
 
     public void refillBoard(){
+        for (int i = 0; i < grid.length; i++){
+            for (int j = 0; j < grid[i].length; j++){
+                int randomCandyIndex = (int) (Math.random() * 7);
+                grid[i][j] = candies[randomCandyIndex];
+            }
+        }
 
+        //change some of the tiles to have 
+        for (int i = 0; i < grid.length; i++){
+            int randomCol = (int) (Math.random() * grid.length);
+            int SpecialCandyIndex = (int) (Math.random() * 8);
+            int isThereSpecial = (int) (Math.random() * 11);
+
+            if (isThereSpecial > 7){
+                grid[i][randomCol] = new Tile(row,col, specialCandies[SpecialCandyIndex]);
+            }
+        }
     }
 
     public boolean hasMoves(){
-
-
+        //check if theres any possible checkMatches
+        <ArrayList> 
     }
 
 }
