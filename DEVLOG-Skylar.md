@@ -15,3 +15,6 @@ Added the constructors in the Game class by calling other classes and added the 
 
 ### 2024-05-29 - Added on to Game Class & Fixed Syntax Errors
 Added reset & update game in the GameClass as well as mousePressed & gameOver method. Also fixed syntax errors in general and in the Game class because it wasn't compiling.
+
+### 2024-05-29 - Discuss & Debugging
+Debugged the Tile & Game class. Discussed extra methods needed for Board class and how to implement them in Game.
