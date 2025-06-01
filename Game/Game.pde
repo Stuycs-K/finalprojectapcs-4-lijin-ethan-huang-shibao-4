@@ -36,7 +36,16 @@ float TILE_SIZE = 60;
       }
     else {
       if (selectedTile != clicked) {
+        int r1 = selectedTile.getRow(board.tileSize, board.boardY);
+        int c1 = selectedTile.getCol(board.tileSize, board.boardX);
+        int r2 = clicked.getRow(board.tileSize, board.boardY);
+        int c2 = clicked.getCol(board.tileSize, board.boardX);
         board.swapCandies(selectedTile, clicked);
+        if (board.checkMatches(r1, c1, r2, c2)) {
+          updateGame();
+        } else {
+          board.swapCandies(selectedTile, clicked);
+        }
       }
       selectedTile.deselect();
       selectedTile = null;

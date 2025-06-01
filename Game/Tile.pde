@@ -11,12 +11,12 @@ class Tile {
     this.isSelected = false;
   }
   
-  int getRow() {
-    return row;
+  int getRow(float tileSize, int boardY) {
+    return int((row - boardY) / tileSize);
   }
   
-  int getCol() {
-    return col;
+  int getCol(float tileSize, int boardX) {
+    return int((col - boardX) / tileSize);
   }
   
   void select() {
