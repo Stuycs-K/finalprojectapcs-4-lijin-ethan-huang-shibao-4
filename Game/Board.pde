@@ -169,7 +169,9 @@ class Board{
             for (int r = up; r < down; r++){
                 canClear[r][c] = true;
             }
+            return true;
         }
+        return false;
     }
 
     public boolean checkMatches(int r1, int c1, int r2, int c2){
@@ -219,6 +221,30 @@ class Board{
 
     public void dropCandies(){
         //moving all the candies above it down one column and then adding additional candies. 
+
+        for (int c = 0; c < cols; c++){
+            int newRow = rows - 1;
+            for (int r = rows - 1; r >= 0; r--){
+                if (grid[r][c].candy != null){
+                    grid[newRow][c].candy = grid[r][c].candy;
+                    newRow--;
+                }
+            }
+
+            for (int r = newRow; i >= 0; i--){
+                grid[r][c].candy = null;
+            }
+        }
+
+        for (int r = 0; r < rows; r++){
+            for (int c = 0; c < cols; c++){
+                if (grid[r][c].candy == null){
+                    int randomCandyIndex = (int) (Math.random() * 7);
+                    grid[i][j].candy = candies[randomCandyIndex];
+                }
+            }
+        }
+        
     }
 
 
