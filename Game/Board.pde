@@ -18,8 +18,8 @@ class Board{
 
     //initialize candies array
     public void initialize(){
-        boardX = 50;
-        boardY = 80;
+        boardX = (1920 - cols * (int)tileSize) / 2;
+        boardY = (1080 - rows * (int)tileSize) / 2;
         moves = 20;
 
         canClear = new boolean[rows][cols];
@@ -71,10 +71,10 @@ class Board{
         stroke(200);
         noFill();
 
-        for (int i = 0; i < rows; i++){
-            for (int j = 0; j < cols; j++){
-                float x0 = i * tileSize;
-                float y0 = j * tileSize;
+        for (int r = 0; r < rows; r++){
+            for (int c = 0; c < cols; c++){
+                float x0 = boardX + c * tileSize;
+                float y0 = boardY + r * tileSize;
 
                 rect(x0, y0, tileSize, tileSize);
 
@@ -82,7 +82,7 @@ class Board{
 
                 if(cd!= null){
                     float cx = x0 + tileSize / 2;
-                    float cy = x0 + tileSize / 2;
+                    float cy = y0 + tileSize / 2;
                     cd.display(cx, cy);
                 }
             }
@@ -92,17 +92,17 @@ class Board{
     public void swapCandies(Tile t1, Tile t2){
         Candy temporary = t2.candy;
         t2.candy = t1.candy; 
-        t1 = temporary;
+        t1.candy = temporary;
     }
 
 
     public Tile getTileAt(int xCord, int yCord){
-        int tileCol = (boardX - xCord) * tileSize;
-        int tileRow = (boardY - yCord) * tileSize;
-        if (tileCol < 0 || tileCol > cols || tileRow < 0 || tileRow > rows){
+        int tileCol = (int) ((xCord - boardX) / tileSize);
+        int tileRow = (int) ((yCord - boardY) / tileSize);
+        if (tileCol < 0 || tileCol >= cols || tileRow < 0 || tileRow >= rows){
             return null;
         }
-        return grid[row][col];
+        return grid[tileRow][tileCol];
     }
 
 
@@ -110,7 +110,7 @@ class Board{
         for (int i = 0; i < grid.length; i++){
             for (int j = 0; j < grid[i].length; j++){
                 int randomCandyIndex = (int) (Math.random() * 7);
-                grid[i][j] = new Tile(Tile.row, Tile.col, candies[randomCandyIndex]);
+                grid[i][j] = new Tile(boardX + j * tileSize, boardY + i * tileSize, candies[randomCandyIndex]);
             }
         }
 
@@ -121,7 +121,7 @@ class Board{
             int isThereSpecial = (int) (Math.random() * 11);
 
             if (isThereSpecial > 7){
-                grid[i][randomCol] = new Tile(row,col, specialCandies[SpecialCandyIndex]);
+                grid[i][randomCol] = new Tile(boardX + randomCol * tileSize, boardY + i * tileSize, specialCandies[SpecialCandyIndex]);
             }
         }
     }
