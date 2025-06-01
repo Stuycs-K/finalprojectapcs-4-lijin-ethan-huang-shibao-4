@@ -33,7 +33,7 @@ class Board{
         candies[4] = new Candy(color(255,165,0), "solid"); //orange
         candies[5] = new Candy(color(128,0,128), "solid"); //purple
 
-        this.specialCandies = Candy[7];
+        this.specialCandies = new Candy[7];
         specialCandies[0] = new Candy(color(255,0,0), "striped"); //red
         specialCandies[1] = new Candy(color(0,255,0), "striped"); //green
         specialCandies[2] = new Candy(color(0,0,255), "striped"); //blue
@@ -51,7 +51,7 @@ class Board{
         for (int i = 0; i < grid.length; i++){
             for (int j = 0; j < grid[i].length; j++){
                 int randomCandyIndex = (int) (Math.random() * 7);
-                grid[i][j] = new Tile(boardX + j * tileSize, boardY + i * tileSize, candies[randomCandyIndex]);
+                grid[i][j] = new Tile((int) (boardX + j * tileSize),(int) (boardY + i * tileSize), candies[randomCandyIndex]);
             }
         }
 
@@ -62,7 +62,7 @@ class Board{
             int isThereSpecial = (int) (Math.random() * 11);
 
             if (isThereSpecial > 7){
-                grid[i][randomCol] = new Tile(boardX + randomCol * tileSize, boardY + i * tileSize, specialCandies[SpecialCandyIndex]);
+                grid[i][randomCol] = new Tile((int) (boardX + randomCol * tileSize), (int) (boardY + i * tileSize), specialCandies[SpecialCandyIndex]);
             }
         }
     }
@@ -96,7 +96,7 @@ class Board{
     }
 
 
-    public Tile getTileAt(int xCord, int yCord){
+    public Tile getTile(int xCord, int yCord){
         int tileCol = (int) ((xCord - boardX) / tileSize);
         int tileRow = (int) ((yCord - boardY) / tileSize);
         if (tileCol < 0 || tileCol >= cols || tileRow < 0 || tileRow >= rows){
@@ -110,7 +110,7 @@ class Board{
         for (int i = 0; i < grid.length; i++){
             for (int j = 0; j < grid[i].length; j++){
                 int randomCandyIndex = (int) (Math.random() * 7);
-                grid[i][j] = new Tile(boardX + j * tileSize, boardY + i * tileSize, candies[randomCandyIndex]);
+                grid[i][j] = new Tile((int) (boardX + j * tileSize), (int) (boardY + i * tileSize), candies[randomCandyIndex]);
             }
         }
 
@@ -121,13 +121,13 @@ class Board{
             int isThereSpecial = (int) (Math.random() * 11);
 
             if (isThereSpecial > 7){
-                grid[i][randomCol] = new Tile(boardX + randomCol * tileSize, boardY + i * tileSize, specialCandies[SpecialCandyIndex]);
+                grid[i][randomCol] = new Tile((int) (boardX + randomCol * tileSize), (int) (boardY + i * tileSize), specialCandies[SpecialCandyIndex]);
             }
         }
     }
 
     public boolean markRun(int r, int c){
-        Color shade = grid[r][c].candy.col;
+        color shade = grid[r][c].candy.col;
         boolean found = false;
 
         int left = c;
@@ -135,14 +135,14 @@ class Board{
 
         while (left - 1>=0 
         && grid[r][left - 1].candy != null
-        && grid[r][left - 1].candy.col.equals(shade)
+        && grid[r][left - 1].candy.col ==(shade)
         ){
             left--;
         }
 
         while (right + 1 < cols 
         && grid[r][right + 1].candy != null
-        && grid[r][right + 1].candy.col.equals(shade)
+        && grid[r][right + 1].candy.col ==(shade)
         ){
             right++;
         }
@@ -152,14 +152,14 @@ class Board{
 
         while (up - 1 >= 0
         && grid[up - 1][c].candy !=null
-        && grid[up - 1][c].candy.col.equals(shade)
+        && grid[up - 1][c].candy.col ==(shade)
         ){
             up--;
         }
 
         while (down + 1 < rows
         && grid[down + 1][c].candy !=null
-        && grid[down + 1][c].candy.col.equals(shade)
+        && grid[down + 1][c].candy.col ==(shade)
         ){
             down++;
         }
