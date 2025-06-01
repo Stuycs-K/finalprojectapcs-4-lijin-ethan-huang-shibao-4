@@ -128,6 +128,7 @@ class Board{
 
     public boolean markRun(int r, int c){
         Color shade = grid[r][c].candy.col;
+        boolean found = false;
 
         int left = c;
         int right = c;
@@ -139,7 +140,7 @@ class Board{
             left--;
         }
 
-        while (right + 1 <= cols 
+        while (right + 1 < cols 
         && grid[r][right + 1].candy != null
         && grid[r][right + 1].candy.col.equals(shade)
         ){
@@ -163,15 +164,23 @@ class Board{
             down++;
         }
 
-        int length = down - up + 1;
+        int vlength = down - up + 1;
+        int hlength = right - left + 1;
 
-        if (length >= 3){
-            for (int rr = up; rr < down; rr++){
-                canClear[r][c] = true;
+        if (vlength >= 3){
+            for (int rr = up; rr <= down; rr++){
+                canClear[rr][c] = true;
             }
-            return true;
+            found = true;
         }
-        return false;
+        
+        if (hlength >=3){
+            for (int cc = left; cc <= right; cc++){
+                canClear[r][cc] = true;
+            }
+            found = true;
+        }
+        return found;
     }
 
     public boolean checkMatches(int r1, int c1, int r2, int c2){
@@ -183,13 +192,13 @@ class Board{
 
         boolean foundMatch = false;
 
-        if (board[r1][c1].candy!= null){
+        if (grid[r1][c1].candy!= null){
             if (markRun(r1,c1)){
                 foundMatch = true;
             }
         }
 
-        if (board[r2][c2].candy!= null){
+        if (grid[r2][c2].candy!= null){
             if (markRun(r2,c2)){
                 foundMatch = true;
             }
@@ -204,7 +213,7 @@ class Board{
         for (int r = 0; r < rows; r++){
             for (int c = 0; c < cols; c++){
                 if (canClear[r][c]){
-                    grid[r][c] = null;
+                    grid[r][c].candy = null;
                     clearedCandies++;
                 }
             }
@@ -267,7 +276,7 @@ class Board{
                 
                 if (r + 1 < rows){
                     Tile down = grid[r+1][c];
-                    swapCandies(t,right);
+                    swapCandies(t,down);
                     
                     boolean makesMatch = checkMatches(r,c,r+1, c);
                     swapCandies(t,down);
