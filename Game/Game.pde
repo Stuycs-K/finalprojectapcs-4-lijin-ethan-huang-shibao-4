@@ -10,7 +10,7 @@ float TILE_SIZE = 60;
   }
   
   void setup() {
-    board = new Board(ROWS, COLS);
+    board = new Board(ROWS, COLS, TILE_SIZE);
     board.initialize();
     scoreKeeper = new Points();
     selectedTile = null;

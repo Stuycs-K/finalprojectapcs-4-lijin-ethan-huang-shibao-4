@@ -11,9 +11,10 @@ class Board{
     boolean[][] canClear;
 
 
-    public Board(int r, int c){
+    public Board(int r, int c, float tileSize){
         this.rows = r;
         this.cols = c;
+        this.tileSize = tileSize;
     }
 
     //initialize candies array
@@ -23,7 +24,7 @@ class Board{
         moves = 20;
 
         canClear = new boolean[rows][cols];
-        this.tileSize = 50;
+        this.tileSize = TILE_SIZE;
 
         this.candies = new Candy[6];
         candies[0] = new Candy(color(255,0,0), "solid"); //red
