@@ -8,6 +8,8 @@ class Board{
     int moves;
     int boardX;
     int boardY;
+    boolean[][] canClear;
+
 
     public Board(int r, int c){
         this.rows = r;
@@ -20,6 +22,7 @@ class Board{
         boardY = 80;
         moves = 20;
 
+        canClear = new boolean[rows][cols];
         this.tileSize = tile.row * tile.col;
 
         this.candies = new Candy[6];
@@ -92,36 +95,6 @@ class Board{
         t1 = temporary;
     }
 
-    public boolean checkMatches(){
-        //iterate from top to bottom and left to right to check for a group of 3
-         int clickCount = 0;
-
-        if (clickCount < 2){
-            if (mousePressed){
-                if (clickCount == 0){
-                    getTileAt(mouseX, mouseY);
-                    clickCount++;
-                    if (getTileAt(mouseX, mouseY) == null){
-                        clickCount--;
-                        //probably print something to say select a valid tile
-                    }
-                }
-                else if (clickCount == 1){
-                    getTileAt(mouseX, mouseY);
-                    clickCount++;
-                    if (getTileAt(mouseX, mouseY) == null){
-                        clickCount--;
-                        //probably print something saying to select a valid tile
-                    }
-                }
-            
-        }
-
-
-    }
-
-
-    }
 
     public Tile getTileAt(int xCord, int yCord){
         int tileCol = (boardX - xCord) * tileSize;
@@ -132,13 +105,6 @@ class Board{
         return grid[row][col];
     }
 
-    public void clearMatches(){
-
-    }
-
-    public void dropCandies(){
-        //moving all the candies above it down one column and then adding additional candies. 
-    }
 
     public void refillBoard(){
         for (int i = 0; i < grid.length; i++){
@@ -160,21 +126,130 @@ class Board{
         }
     }
 
+    public boolean markRun(int r, int c){
+        Color shade = grid[r][c].candy.col;
+
+        int left = c
+        int right = c;
+
+        while (left - 1>=0 
+        && grid[r][left - 1].candy != null
+        && grid[r][left - 1].candy.col.equals(shade)
+        ){
+            left--;
+        }
+
+        while (right + 1 <= cols 
+        && grid[r][right + 1].candy != null
+        && grid[r][right + 1].candy.col.equals(shade)
+        ){
+            right++;
+        }
+
+        int up = r
+        int down = r;
+
+        while (up - 1 >= 0
+        && grid[up - 1][c].candy !=null
+        && grid[up - 1][c].candy.col.equals(shade)
+        ){
+            up--;
+        }
+
+        while (down + 1 < rows
+        && grid[down + 1][c].candy !=null
+        && grid[down + 1][c].candy.col.equals(shade)
+        ){
+            down++;
+        }
+
+        int length = down - up + 1;
+
+        if (length >= 3){
+            for (int r = up; r < down; r++){
+                canClear[r][c] = true;
+            }
+        }
+    }
+
+    public boolean checkMatches(int r1, int c1, int r2, int c2){
+        for (int r = 0; r < rows; r++){
+            for (int c = 0; c< cols; c++){
+                canClear[r][c] = false;
+            }
+        }
+
+        boolean foundMatch = false;
+
+        if (board[r1][c1].candy!= null){
+            if (markRun(r1,c1)){
+                foundMatch = true;
+            }
+        }
+
+        if (board[r2][c2].candy!= null){
+            if (markRun(r2,c2)){
+                foundMatch = true;
+            }
+        }
+        
+        return foundMatch;
+    }
+
+    public int clearMatches(){
+        int clearedCandies = 0;
+
+        for (int r = 0; r < rows; r++){
+            for (int c = 0; c < cols; c++){
+                if (canClear[r][c]){
+                    grid[r][c] = null;
+                    clearedCandies++;
+                }
+            }
+        }
+
+        for (int r = 0; r < rows; r++){
+            for (int c = 0; c < cols; c++){
+                canClear[r][c] = false;
+            }
+        }
+
+        return clearedCandies;
+    }
+
+    public void dropCandies(){
+        //moving all the candies above it down one column and then adding additional candies. 
+    }
+
+
     public boolean hasMoves(){
-        //check if theres any possible checkMatches left in the board
-        <ArrayList> 
         //iterate through each tile and check if a combination of 3 can be made.
 
+        for (int r = 0; r < rows; r++){
+            for (int c = 0; c < cols; c++){
+                Tile t = grid[r][c]
+
+                if (c + 1 < cols){
+                    Tile right = grid[r][c+1];
+                    swapCandies(t, right);
+
+                    boolean makesMatch = checkMatches(r, c, r, c + 1);
+                    if(makesMatch) return true;
+                }
+                swapCandies(t,right);
+            }
 
 
-        //horizontal 
-        
-
-
-
-        //vertical
-
-
+                if (r + 1 < rows){
+                    Tile down = grid[r+1][c];
+                    swapCandies(t,right);
+                    
+                    boolean makesMatch = checkMatches(r,c,r+1, c);
+                    if(makesMatch) return true;
+                }
+                swapCandies(t,down);
+            }
+        return false;
     }
 
 }
