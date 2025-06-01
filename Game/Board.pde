@@ -23,7 +23,7 @@ class Board{
         moves = 20;
 
         canClear = new boolean[rows][cols];
-        this.tileSize = tile.row * tile.col;
+        this.tileSize = 50;
 
         this.candies = new Candy[6];
         candies[0] = new Candy(color(255,0,0), "solid"); //red
@@ -34,16 +34,16 @@ class Board{
         candies[5] = new Candy(color(128,0,128), "solid"); //purple
 
         this.specialCandies = Candy[7];
-        candies[0] = new Candy(color(255,0,0), "striped"); //red
-        candies[1] = new Candy(color(0,255,0), "striped"); //green
-        candies[2] = new Candy(color(0,0,255), "striped"); //blue
-        candies[3] = new Candy(color(255,255,0), "striped"); //yellow
-        candies[4] = new Candy(color(255,165,0), "striped"); //orange
-        candies[5] = new Candy(color(128,0,128), "striped"); //purple
-        candies[6] = new Candy(color(0,0,0), "disco"); //black (disco ball);
+        specialCandies[0] = new Candy(color(255,0,0), "striped"); //red
+        specialCandies[1] = new Candy(color(0,255,0), "striped"); //green
+        specialCandies[2] = new Candy(color(0,0,255), "striped"); //blue
+        specialCandies[3] = new Candy(color(255,255,0), "striped"); //yellow
+        specialCandies[4] = new Candy(color(255,165,0), "striped"); //orange
+        specialCandies[5] = new Candy(color(128,0,128), "striped"); //purple
+        specialCandies[6] = new Candy(color(0,0,0), "disco"); //black (disco ball);
 
 
-        grid = Tile[rows][cols];
+        grid = new Tile[rows][cols];
 
         //initialize array with just solids first
 
@@ -51,7 +51,7 @@ class Board{
         for (int i = 0; i < grid.length; i++){
             for (int j = 0; j < grid[i].length; j++){
                 int randomCandyIndex = (int) (Math.random() * 7);
-                grid[i][j] = new Tile(boardX + j * tileSize, boardY + j * tileSize, candies[randomCandyIndex]);
+                grid[i][j] = new Tile(boardX + j * tileSize, boardY + i * tileSize, candies[randomCandyIndex]);
             }
         }
 
@@ -62,7 +62,7 @@ class Board{
             int isThereSpecial = (int) (Math.random() * 11);
 
             if (isThereSpecial > 7){
-                grid[i][randomCol] = new Tile(boardX + j * tileSize, boardY + j * tileSize, specialCandies[SpecialCandyIndex]);
+                grid[i][randomCol] = new Tile(boardX + randomCol * tileSize, boardY + i * tileSize, specialCandies[SpecialCandyIndex]);
             }
         }
     }
@@ -129,7 +129,7 @@ class Board{
     public boolean markRun(int r, int c){
         Color shade = grid[r][c].candy.col;
 
-        int left = c
+        int left = c;
         int right = c;
 
         while (left - 1>=0 
@@ -146,7 +146,7 @@ class Board{
             right++;
         }
 
-        int up = r
+        int up = r;
         int down = r;
 
         while (up - 1 >= 0
@@ -166,7 +166,7 @@ class Board{
         int length = down - up + 1;
 
         if (length >= 3){
-            for (int r = up; r < down; r++){
+            for (int rr = up; rr < down; rr++){
                 canClear[r][c] = true;
             }
             return true;
@@ -231,7 +231,7 @@ class Board{
                 }
             }
 
-            for (int r = newRow; i >= 0; i--){
+            for (int r = newRow; r >= 0; r--){
                 grid[r][c].candy = null;
             }
         }
@@ -240,7 +240,7 @@ class Board{
             for (int c = 0; c < cols; c++){
                 if (grid[r][c].candy == null){
                     int randomCandyIndex = (int) (Math.random() * 7);
-                    grid[i][j].candy = candies[randomCandyIndex];
+                    grid[r][c].candy = candies[randomCandyIndex];
                 }
             }
         }
@@ -253,27 +253,27 @@ class Board{
 
         for (int r = 0; r < rows; r++){
             for (int c = 0; c < cols; c++){
-                Tile t = grid[r][c]
+                Tile t = grid[r][c];
 
                 if (c + 1 < cols){
                     Tile right = grid[r][c+1];
                     swapCandies(t, right);
 
                     boolean makesMatch = checkMatches(r, c, r, c + 1);
+                    swapCandies(t,right);
+
                     if(makesMatch) return true;
                 }
-                swapCandies(t,right);
-            }
-
-
+                
                 if (r + 1 < rows){
                     Tile down = grid[r+1][c];
                     swapCandies(t,right);
                     
                     boolean makesMatch = checkMatches(r,c,r+1, c);
+                    swapCandies(t,down);
                     if(makesMatch) return true;
                 }
-                swapCandies(t,down);
+            }
             }
         return false;
     }
