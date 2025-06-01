@@ -17,6 +17,6 @@ I did the initialize method where I initialized the board with solid candies and
 I did the refill method, getTileAt method, and started the checkMatches method where I take user input of the user attempting to make a match. 
 
 ### 2025-05-31 Implemented clearing matches, checking for matches and dropping candies
-I rewrote the swap method to only check for candies and I wrote methods like hasMoves, checkMatches,clearMatches, dropCandies, 
+I rewrote the swap method to only check for candies and I wrote methods like hasMoves, checkMatches,clearMatches, and dropCandies
 
 ### 2024-01-03 - Brief description
