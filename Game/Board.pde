@@ -58,7 +58,7 @@ class Board{
         //change some of the tiles to have 
         for (int i = 0; i < grid.length; i++){
             int randomCol = (int) (Math.random() * grid.length);
-            int SpecialCandyIndex = (int) (Math.random() * 8);
+            int SpecialCandyIndex = (int) (Math.random() * specialCandies.length);
             int isThereSpecial = (int) (Math.random() * 11);
 
             if (isThereSpecial > 7){
@@ -235,9 +235,8 @@ class Board{
             int newRow = rows - 1;
             for (int r = rows - 1; r >= 0; r--){
                 if (grid[r][c].candy != null){
-                    grid[newRow][c].candy = grid[r][c].candy;
                     if (newRow != r) {
-                      grid[r][c].candy = null;
+                      grid[newRow][c].candy = grid[r][c].candy;
                     }
                     newRow--;
                 }
@@ -247,16 +246,14 @@ class Board{
                 grid[r][c].candy = null;
             }
         }
-
         for (int r = 0; r < rows; r++){
             for (int c = 0; c < cols; c++){
                 if (grid[r][c].candy == null){
-                    int randomCandyIndex = (int) (Math.random() * 7);
+                    int randomCandyIndex = (int) (Math.random() * candies.length);
                     grid[r][c].candy = candies[randomCandyIndex];
                 }
             }
         }
-        
     }
 
 

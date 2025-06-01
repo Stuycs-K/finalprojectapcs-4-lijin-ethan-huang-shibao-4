@@ -28,31 +28,21 @@ float TILE_SIZE = 60;
     if (row >= board.rows || col >= board.cols) {
       return;
     }
-    Tile clicked = board.getTile(row, col);
-    if (selectedTile == null) {
-      selectedTile = clicked;
-      selectedTile.select();
-    }
+    Tile clicked = board.getTile(mouseX, mouseY);
+    if (clicked != null) {
+      if (selectedTile == null) {
+        selectedTile = clicked;
+        selectedTile.select();
+      }
     else {
-      selectedTile.swap(clicked);
-      int r1 = selectedTile.getRow();
-      int c1 = selectedTile.getCol();
-      int r2 = clicked.getRow();
-      int c2 = clicked.getCol();
-      if (board.checkMatches(r1, c1, r2, c2)) {
-          board.moves--;
-          updateGame();
-          if (gameOver()) {
-            println("Game Over!");
-           }
+      if (selectedTile != clicked) {
+        board.swapCandies(selectedTile, clicked);
       }
-      else {
-        selectedTile.swap(clicked);
-      }
+      selectedTile.deselect();
+      selectedTile = null;
+     }
     }
-    selectedTile.deselect();
-    selectedTile = null;
-   }
+  }
    
   void resetGame(){
     scoreKeeper.reset();
