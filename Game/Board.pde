@@ -44,10 +44,11 @@ class Board{
 
         //initialize array with just solids first
 
+
         for (int i = 0; i < grid.length; i++){
             for (int j = 0; j < grid[i].length; j++){
                 int randomCandyIndex = (int) (Math.random() * 7);
-                grid[i][j] = candies[randomCandyIndex];
+                grid[i][j] = new Tile(boardX + j * tileSize, boardY + j * tileSize, candies[randomCandyIndex]);
             }
         }
 
@@ -58,7 +59,7 @@ class Board{
             int isThereSpecial = (int) (Math.random() * 11);
 
             if (isThereSpecial > 7){
-                grid[i][randomCol] = new Tile(row,col, specialCandies[SpecialCandyIndex]);
+                grid[i][randomCol] = new Tile(boardX + j * tileSize, boardY + j * tileSize, specialCandies[SpecialCandyIndex]);
             }
         }
     }
@@ -85,9 +86,9 @@ class Board{
         }
     }
 
-    public void swap(Tile t1, Tile t2){
-        Tile temporary = t2;
-        t2 = t1; 
+    public void swapCandies(Tile t1, Tile t2){
+        Candy temporary = t2.candy;
+        t2.candy = t1.candy; 
         t1 = temporary;
     }
 
@@ -143,7 +144,7 @@ class Board{
         for (int i = 0; i < grid.length; i++){
             for (int j = 0; j < grid[i].length; j++){
                 int randomCandyIndex = (int) (Math.random() * 7);
-                grid[i][j] = candies[randomCandyIndex];
+                grid[i][j] = new Tile(Tile.row, Tile.col, candies[randomCandyIndex]);
             }
         }
 
@@ -160,8 +161,20 @@ class Board{
     }
 
     public boolean hasMoves(){
-        //check if theres any possible checkMatches
+        //check if theres any possible checkMatches left in the board
         <ArrayList> 
+        //iterate through each tile and check if a combination of 3 can be made.
+
+
+
+        //horizontal 
+        
+
+
+
+        //vertical
+
+
     }
 
 }
