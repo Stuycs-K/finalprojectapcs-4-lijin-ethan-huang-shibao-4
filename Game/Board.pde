@@ -18,8 +18,8 @@ class Board{
 
     //initialize candies array
     public void initialize(){
-        boardX = (1920 - cols * (int)tileSize) / 2;
-        boardY = (1080 - rows * (int)tileSize) / 2;
+        boardX = (width - cols * int(tileSize)) / 2;
+        boardY = (height - rows * int(tileSize)) / 2;
         moves = 20;
 
         canClear = new boolean[rows][cols];
@@ -50,7 +50,7 @@ class Board{
 
         for (int i = 0; i < grid.length; i++){
             for (int j = 0; j < grid[i].length; j++){
-                int randomCandyIndex = (int) (Math.random() * 7);
+                int randomCandyIndex = (int) (Math.random() * candies.length);
                 grid[i][j] = new Tile((int) (boardX + j * tileSize),(int) (boardY + i * tileSize), candies[randomCandyIndex]);
             }
         }
@@ -109,7 +109,7 @@ class Board{
     public void refillBoard(){
         for (int i = 0; i < grid.length; i++){
             for (int j = 0; j < grid[i].length; j++){
-                int randomCandyIndex = (int) (Math.random() * 7);
+                int randomCandyIndex = (int) (Math.random() * candies.length);
                 grid[i][j] = new Tile((int) (boardX + j * tileSize), (int) (boardY + i * tileSize), candies[randomCandyIndex]);
             }
         }
@@ -117,7 +117,7 @@ class Board{
         //change some of the tiles to have 
         for (int i = 0; i < grid.length; i++){
             int randomCol = (int) (Math.random() * grid.length);
-            int SpecialCandyIndex = (int) (Math.random() * 8);
+            int SpecialCandyIndex = (int) (Math.random() * specialCandies.length);
             int isThereSpecial = (int) (Math.random() * 11);
 
             if (isThereSpecial > 7){
@@ -236,6 +236,9 @@ class Board{
             for (int r = rows - 1; r >= 0; r--){
                 if (grid[r][c].candy != null){
                     grid[newRow][c].candy = grid[r][c].candy;
+                    if (newRow != r) {
+                      grid[r][c].candy = null;
+                    }
                     newRow--;
                 }
             }

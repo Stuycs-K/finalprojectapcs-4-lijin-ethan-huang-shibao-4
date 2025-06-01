@@ -5,8 +5,11 @@ int ROWS = 9;
 int COLS = 9;
 float TILE_SIZE = 60;
   
-  void setup() {
+  void settings() {
     size(COLS * int(TILE_SIZE), ROWS * int(TILE_SIZE));
+  }
+  
+  void setup() {
     board = new Board(ROWS, COLS);
     board.initialize();
     scoreKeeper = new Points();
@@ -37,7 +40,11 @@ float TILE_SIZE = 60;
       int r2 = clicked.getRow();
       int c2 = clicked.getCol();
       if (board.checkMatches(r1, c1, r2, c2)) {
+          board.moves--;
           updateGame();
+          if (gameOver()) {
+            println("Game Over!");
+           }
       }
       else {
         selectedTile.swap(clicked);
