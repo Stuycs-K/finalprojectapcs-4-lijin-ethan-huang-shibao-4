@@ -15,14 +15,11 @@ float TILE_SIZE = 60;
   
   void draw() {
     background(255);
+    board.display();
     scoreKeeper.display(20, height - 20);
   }
   
   void mousePressed() {
-    if (gameOver()) {
-      return;
-      text("Game over.", ROWS / 2, COLS / 2);
-    }
     int col = int(mouseX / TILE_SIZE);
     int row = int(mouseY / TILE_SIZE);
     if (row >= board.rows || col >= board.cols) {
@@ -35,7 +32,11 @@ float TILE_SIZE = 60;
     }
     else {
       selectedTile.swap(clicked);
-      if (board.checkMatches()) {
+      int r1 = selectedTile.getRow();
+      int c1 = selectedTile.getCol();
+      int r2 = clicked.getRow();
+      int c2 = clicked.getCol();
+      if (board.checkMatches(r1, c1, r2, c2)) {
           updateGame();
       }
       else {
@@ -53,7 +54,15 @@ float TILE_SIZE = 60;
   }
 
   void updateGame(){
-    while (board.checkMatches()) {
+    int col = int(mouseX / TILE_SIZE);
+    int row = int(mouseY / TILE_SIZE);
+    Tile clicked = board.getTile(row, col);
+    selectedTile = clicked;
+    int r1 = selectedTile.getRow();
+    int c1 = selectedTile.getCol();
+    int r2 = clicked.getRow();
+    int c2 = clicked.getCol();
+    while (board.checkMatches(r1, c1, r2, c2)) {
       int cleared = board.clearMatches();
       scoreKeeper.add(cleared * 10);
       board.dropCandies();

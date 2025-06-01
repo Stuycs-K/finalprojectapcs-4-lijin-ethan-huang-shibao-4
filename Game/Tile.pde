@@ -11,6 +11,14 @@ class Tile {
     this.isSelected = false;
   }
   
+  int getRow() {
+    return row;
+  }
+  
+  int getCol() {
+    return col;
+  }
+  
   void select() {
     isSelected = true;
   }
