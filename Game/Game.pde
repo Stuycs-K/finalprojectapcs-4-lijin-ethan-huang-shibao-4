@@ -23,29 +23,39 @@ float TILE_SIZE = 60;
   }
   
   void mousePressed() {
-    int col = int(mouseX / TILE_SIZE);
-    int row = int(mouseY / TILE_SIZE);
-    if (row >= board.rows || col >= board.cols) {
-      return;
-    }
+    //int col = int(mouseX / TILE_SIZE);
+    //int row = int(mouseY / TILE_SIZE);
+    //if (row >= board.rows || col >= board.cols) {
+    //  return;
+    //}
     Tile clicked = board.getTile(mouseX, mouseY);
-    if (clicked != null) {
-      if (selectedTile == null) {
+    //if (clicked != null) {
+    //  if (selectedTile == null) {
+    //    selectedTile = clicked;
+    //    selectedTile.select();
+    //  }
+    //else {
+      if (clicked == null) return;
+      
+      if (selectedTile == null){
         selectedTile = clicked;
         selectedTile.select();
       }
-    else {
-      if (selectedTile != clicked) {
+      else if (selectedTile != clicked) {
         int r1 = selectedTile.getRow(board.tileSize, board.boardY);
         int c1 = selectedTile.getCol(board.tileSize, board.boardX);
         int r2 = clicked.getRow(board.tileSize, board.boardY);
         int c2 = clicked.getCol(board.tileSize, board.boardX);
-        board.swapCandies(selectedTile, clicked);
-        if (board.checkMatches(r1, c1, r2, c2)) {
-          updateGame();
-        } else {
+        //board.swapCandies(selectedTile, clicked);
+        //if (board.checkMatches(r1, c1, r2, c2)) {
+        //  updateGame();
+        //} else {
+          if (abs(r1-r2) + abs(c1-c2) == 1){
           board.swapCandies(selectedTile, clicked);
-        }
+            if(board.checkMatches(r1,c1,r2,c2)){
+              updateGame();
+        }else {
+          board.swapCandies(selectedTile, clicked);
       }
       selectedTile.deselect();
       selectedTile = null;
@@ -74,7 +84,6 @@ float TILE_SIZE = 60;
         int cleared = board.clearMatches();
         scoreKeeper.add(cleared * 10);
         board.dropCandies();
-        board.refillBoard();
       }
     }
   }

@@ -34,8 +34,8 @@ class Tile {
   }
   
   void display(float tileSize) {
-    float x = col * tileSize;
-    float y = row * tileSize;
+    float x = col;
+    float y = row;
     if (isSelected) {
       stroke(255, 0, 0);
       strokeWeight(4);
