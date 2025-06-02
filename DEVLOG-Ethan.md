@@ -19,4 +19,6 @@ I did the refill method, getTileAt method, and started the checkMatches method w
 ### 2025-05-31 Implemented clearing matches, checking for matches and dropping candies
 I rewrote the swap method to only check for candies and I wrote methods like hasMoves, checkMatches,clearMatches, and dropCandies
 
+### 2025-06-1 debugged game,board and tile
+I fixed tile to only take row and col instead of multiplying them by tileSize. For board i debugged the swapping logic and also the initialization. For Game i edited it so that mousePressed is ever selected at a time, and the board isnt refilled every single time.
 ### 2024-01-03 - Brief description
