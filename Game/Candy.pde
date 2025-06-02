@@ -11,7 +11,7 @@ class Candy{
         //width and height parameters are subject to change
         fill(col);
         noStroke();
-        ellipse(x,y,10,10);
+        ellipse(x,y,0.8 * 60,0.8 * 60);
     }
 
     public color getColor(){

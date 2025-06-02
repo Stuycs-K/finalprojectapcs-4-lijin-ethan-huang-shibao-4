@@ -4,6 +4,7 @@ Tile selectedTile;
 int ROWS = 9;
 int COLS = 9;
 float TILE_SIZE = 60;
+boolean isGameOver = false;
   
   void settings() {
     size(COLS * int(TILE_SIZE), ROWS * int(TILE_SIZE));
@@ -14,6 +15,12 @@ float TILE_SIZE = 60;
     board.initialize();
     scoreKeeper = new Points();
     selectedTile = null;
+    if (isGameOver) {
+      textAlign(CENTER, CENTER);
+      textSize(36);
+      fill(255, 0, 0);
+      text("Game Over", width / 2, height / 2);
+    }
   }
   
   void draw() {
@@ -85,6 +92,9 @@ float TILE_SIZE = 60;
         scoreKeeper.add(cleared * 10);
         board.dropCandies();
       }
+    }
+    if (!board.hasMoves()) {
+      isGameOver = true;
     }
   }
 
