@@ -34,14 +34,14 @@ class Board{
         candies[4] = new Candy(color(255,165,0), "solid"); //orange
         candies[5] = new Candy(color(128,0,128), "solid"); //purple
 
-        this.specialCandies = new Candy[7];
-        specialCandies[0] = new Candy(color(255,0,0), "striped"); //red
-        specialCandies[1] = new Candy(color(0,255,0), "striped"); //green
-        specialCandies[2] = new Candy(color(0,0,255), "striped"); //blue
-        specialCandies[3] = new Candy(color(255,255,0), "striped"); //yellow
-        specialCandies[4] = new Candy(color(255,165,0), "striped"); //orange
-        specialCandies[5] = new Candy(color(128,0,128), "striped"); //purple
-        specialCandies[6] = new Candy(color(0,0,0), "disco"); //black (disco ball);
+        //this.specialCandies = new Candy[7];
+        //specialCandies[0] = new Candy(color(255,0,0), "striped"); //red
+        //specialCandies[1] = new Candy(color(0,255,0), "striped"); //green
+        //specialCandies[2] = new Candy(color(0,0,255), "striped"); //blue
+        //specialCandies[3] = new Candy(color(255,255,0), "striped"); //yellow
+        //specialCandies[4] = new Candy(color(255,165,0), "striped"); //orange
+        //specialCandies[5] = new Candy(color(128,0,128), "striped"); //purple
+        //specialCandies[6] = new Candy(color(0,0,0), "disco"); //black (disco ball);
 
 
         grid = new Tile[rows][cols];
@@ -57,15 +57,16 @@ class Board{
         }
 
         //change some of the tiles to have 
-        for (int i = 0; i < grid.length; i++){
-            int randomCol = (int) (Math.random() * grid.length);
-            int SpecialCandyIndex = (int) (Math.random() * specialCandies.length);
-            int isThereSpecial = (int) (Math.random() * 11);
+        //change some of the tiles to have 
+        //for (int i = 0; i < grid.length; i++){
+        //    int randomCol = (int) (Math.random() * grid.length);
+        //    int SpecialCandyIndex = (int) (Math.random() * specialCandies.length);
+        //    int isThereSpecial = (int) (Math.random() * 11);
 
-            if (isThereSpecial > 7){
-                grid[i][randomCol] = new Tile((int) (boardX + randomCol * tileSize), (int) (boardY + i * tileSize), specialCandies[SpecialCandyIndex]);
-            }
-        }
+        //    if (isThereSpecial > 7){
+        //        grid[i][randomCol] = new Tile((int) (boardX + randomCol * tileSize), (int) (boardY + i * tileSize), specialCandies[SpecialCandyIndex]);
+        //    }
+        //}
     }
 
     public void display(){
@@ -77,6 +78,8 @@ class Board{
                 float x0 = boardX + c * tileSize;
                 float y0 = boardY + r * tileSize;
 
+                fill(255);
+                stroke(0);
                 rect(x0, y0, tileSize, tileSize);
 
                 Candy cd = grid[r][c].candy;
@@ -116,15 +119,16 @@ class Board{
         }
 
         //change some of the tiles to have 
-        for (int i = 0; i < grid.length; i++){
-            int randomCol = (int) (Math.random() * grid.length);
-            int SpecialCandyIndex = (int) (Math.random() * specialCandies.length);
-            int isThereSpecial = (int) (Math.random() * 11);
+        //change some of the tiles to have 
+        //for (int i = 0; i < grid.length; i++){
+        //    int randomCol = (int) (Math.random() * grid.length);
+        //    int SpecialCandyIndex = (int) (Math.random() * specialCandies.length);
+        //    int isThereSpecial = (int) (Math.random() * 11);
 
-            if (isThereSpecial > 7){
-                grid[i][randomCol] = new Tile((int) (boardX + randomCol * tileSize), (int) (boardY + i * tileSize), specialCandies[SpecialCandyIndex]);
-            }
-        }
+        //    if (isThereSpecial > 7){
+        //        grid[i][randomCol] = new Tile((int) (boardX + randomCol * tileSize), (int) (boardY + i * tileSize), specialCandies[SpecialCandyIndex]);
+        //    }
+        //}
     }
 
     public boolean markRun(int r, int c){
