@@ -52,7 +52,7 @@ class Board{
         for (int i = 0; i < grid.length; i++){
             for (int j = 0; j < grid[i].length; j++){
                 int randomCandyIndex = (int) (Math.random() * candies.length);
-                grid[i][j] = new Tile((int) (boardX + j * tileSize),(int) (boardY + i * tileSize), candies[randomCandyIndex]);
+                grid[i][j] = new Tile((int) (boardY + i * tileSize),(int) (boardX + j * tileSize), candies[randomCandyIndex]);
             }
         }
 
@@ -114,7 +114,7 @@ class Board{
         for (int i = 0; i < grid.length; i++){
             for (int j = 0; j < grid[i].length; j++){
                 int randomCandyIndex = (int) (Math.random() * candies.length);
-                grid[i][j] = new Tile((int) (boardX + j * tileSize), (int) (boardY + i * tileSize), candies[randomCandyIndex]);
+                grid[i][j] = new Tile((int) (boardY + i * tileSize),(int) (boardX + j * tileSize), candies[randomCandyIndex]);
             }
         }
 
