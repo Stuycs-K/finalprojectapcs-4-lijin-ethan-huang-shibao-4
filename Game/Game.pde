@@ -5,6 +5,9 @@ int ROWS = 9;
 int COLS = 9;
 float TILE_SIZE = 60;
 boolean isGameOver = false;
+enum GameState { WAITING, ANIMATING, MATCHING }
+GameState state = GameState.WAITING;
+int delayFrames = 0;
   
   void settings() {
     size(COLS * int(TILE_SIZE), ROWS * int(TILE_SIZE));
@@ -27,6 +30,13 @@ boolean isGameOver = false;
     background(255);
     board.display();
     scoreKeeper.display(20, height - 20);
+    if (state == GameState.ANIMATING) {
+      delayFrames--;
+      if (delayFrames <= 0) {
+        state = GameState.MATCHING;
+        updateGame();
+      }
+    }
   }
   
   void mousePressed() {
