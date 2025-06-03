@@ -2,7 +2,7 @@
 
 This document must be updated daily every time you finish a work session.
 
-## Ethan Lijin CHANGE THE NAME FOOL!
+## Ethan Lijin!
 
 ### 2025-05-25 - Candy Class and Branches
 Learned about branches (~10 minutes) and finished the Candy class according to the Uml Diagram (~20 minutes);
@@ -20,5 +20,7 @@ I did the refill method, getTileAt method, and started the checkMatches method w
 I rewrote the swap method to only check for candies and I wrote methods like hasMoves, checkMatches,clearMatches, and dropCandies
 
 ### 2025-06-1 debugged game,board and tile
-I fixed tile to only take row and col instead of multiplying them by tileSize. For board i debugged the swapping logic and also the initialization. For Game i edited it so that mousePressed is ever selected at a time, and the board isnt refilled every single time.
-### 2024-01-03 - Brief description
+I fixed tile to only take row and col instead of multiplying them by tileSize. For board i debugged the swapping logic and also the initialization. For Game i edited it so that mousePressed is selected at a time, and the board isnt refilled every single time.
+
+### 2025-06-2 Testing
+Tested the game in class and now next steps are animating the process, adding images of candy, and adding special candies. 
