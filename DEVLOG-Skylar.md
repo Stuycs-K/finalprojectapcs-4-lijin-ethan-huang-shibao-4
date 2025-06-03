@@ -24,3 +24,6 @@ Added accessor methods in the Tile class to implement in game class. Edited upda
 
 ### 2025-06-02 - Testing
 After finalizing some minor changes last night, we tested out the game in class to find matches (next steps are animating & adding images of the candy)
+
+### 2025-06-03 - Working on Animations
+Starting to work on animating the candies so candies fall down naturally when matches are made instead of teleporting positions. Added Game State in Game class and instance variables for delaying and animating + if statements when matches are made
