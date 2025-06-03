@@ -101,6 +101,9 @@ int delayFrames = 0;
         int cleared = board.clearMatches();
         scoreKeeper.add(cleared * 10);
         board.dropCandies();
+        delayFrames = 15;
+        state = GameState.ANIMATING;
+        return;
       }
     }
     if (!board.hasMoves()) {
