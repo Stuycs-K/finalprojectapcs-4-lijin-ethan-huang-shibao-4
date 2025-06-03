@@ -24,3 +24,6 @@ I fixed tile to only take row and col instead of multiplying them by tileSize. F
 
 ### 2025-06-2 Testing
 Tested the game in class and now next steps are animating the process, adding images of candy, and adding special candies. 
+
+### 2025-06-3 displaying Candies
+edited the candy class's display method to instead display the candy crush pngs
