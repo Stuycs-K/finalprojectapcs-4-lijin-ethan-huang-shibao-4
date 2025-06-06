@@ -13,6 +13,9 @@ Brainstormed different candy types and colors necessary (~5 minutes) and started
 ### 2025-05-28 Board class initialize and display
 I did the initialize method where I initialized the board with solid candies and selected random tiles to have specialCandies. I also worked on the display method.
 
+### 2025-05-29 Thinked about the logic behind matching
+I added a constructor to the board class so that the board class has a constructor. I also started adding new methods so that the matches would function.
+
 ### 2025-05-30 User input and refilling/clearing matches and the board
 I did the refill method, getTileAt method, and started the checkMatches method where I take user input of the user attempting to make a match. 
 
@@ -27,3 +30,8 @@ Tested the game in class and now next steps are animating the process, adding im
 
 ### 2025-06-3 displaying Candies
 edited the candy class's display method to instead display the candy crush pngs
+
+### 2025-06-4 Thinking about the animation
+Helped outline in class how to show other blocks dissapearing following just one block disapearing. 
+
+### 2025-06-06 Worked on 
