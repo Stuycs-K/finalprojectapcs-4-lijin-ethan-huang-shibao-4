@@ -83,11 +83,6 @@ PImage bg;
   }
   
   void mousePressed() {
-    //int col = int(mouseX / TILE_SIZE);
-    //int row = int(mouseY / TILE_SIZE);
-    //if (row >= board.rows || col >= board.cols) {
-    //  return;
-    //}
     if (screenState == ScreenState.MENU) {
       if (mouseX >= startButtonX && mouseX <= startButtonX + startButtonW && mouseY >= startButtonY && mouseY <= startButtonY + startButtonH) {
         startGame();
@@ -95,12 +90,6 @@ PImage bg;
       return;
     }
     Tile clicked = board.getTile(mouseX, mouseY - 80);
-    //if (clicked != null) {
-    //  if (selectedTile == null) {
-    //    selectedTile = clicked;
-    //    selectedTile.select();
-    //  }
-    //else {
       if (clicked == null) return;
       
       if (selectedTile == null){
@@ -112,10 +101,6 @@ PImage bg;
         int c1 = selectedTile.getCol(board.tileSize, board.boardX);
         int r2 = clicked.getRow(board.tileSize, board.boardY);
         int c2 = clicked.getCol(board.tileSize, board.boardX);
-        //board.swapCandies(selectedTile, clicked);
-        //if (board.checkMatches(r1, c1, r2, c2)) {
-        //  updateGame();
-        //} else {
           if (abs(r1-r2) + abs(c1-c2) == 1){
           board.swapCandies(selectedTile, clicked);
             if(board.checkMatches(r1,c1,r2,c2)){
