@@ -5,15 +5,23 @@ int ROWS = 9;
 int COLS = 9;
 float TILE_SIZE = 60;
 boolean isGameOver = false;
-enum GameState { WAITING, ANIMATING, MATCHING }
+enum GameState { WAITING, ANIMATING, MATCHING };
 GameState state = GameState.WAITING;
 int delayFrames = 0;
+ScreenState screenState = ScreenState.MENU;
+enum ScreenState { MENU, GAME };
+int startButtonX;
+int startButtonY;
+int startButtonW = 200; 
+int startButtonH = 80;
   
   void settings() {
-    size(COLS * int(TILE_SIZE), ROWS * int(TILE_SIZE));
+    size(COLS * int(TILE_SIZE), ROWS * int(TILE_SIZE) + 80);
   }
   
   void setup() {
+    startButtonX = width / 2 - startButtonW / 2;
+    startButtonY = height / 2 - startButtonH / 2;
     board = new Board(ROWS, COLS, TILE_SIZE);
     board.initialize();
     scoreKeeper = new Points();
@@ -37,6 +45,38 @@ int delayFrames = 0;
         updateGame();
       }
     }
+    if (screenState == ScreenState.MENU) {
+      drawMainMenu();
+    } 
+    else if (screenState == ScreenState.GAME) {
+      board.display();
+      scoreKeeper.display(width / 2, 40);
+      if (state == GameState.ANIMATING) {
+        delayFrames--;
+        if (delayFrames <= 0) {
+          state = GameState.MATCHING;
+          updateGame();
+        }
+      }
+      if (isGameOver) {
+        fill(255, 0, 0);
+        textAlign(CENTER, CENTER);
+        textSize(36);
+        text("Game Over", width / 2, height / 2);
+      }
+    }
+  }
+  
+  void drawMainMenu() {
+    fill(50, 150, 255);
+    textAlign(CENTER, CENTER);
+    textSize(50);
+    text("Candy Crush", width / 2, height / 2 - 100);
+    fill(0, 200, 100);
+    rect(startButtonX, startButtonY, startButtonW, startButtonH, 20);
+    fill(255);
+    textSize(32);
+    text("Start", width / 2, height / 2);
   }
   
   void mousePressed() {
@@ -45,7 +85,13 @@ int delayFrames = 0;
     //if (row >= board.rows || col >= board.cols) {
     //  return;
     //}
-    Tile clicked = board.getTile(mouseX, mouseY);
+    if (screenState == ScreenState.MENU) {
+      if (mouseX >= startButtonX && mouseX <= startButtonX + startButtonW && mouseY >= startButtonY && mouseY <= startButtonY + startButtonH) {
+        startGame();
+      }
+      return;
+    }
+    Tile clicked = board.getTile(mouseX, mouseY - 80);
     //if (clicked != null) {
     //  if (selectedTile == null) {
     //    selectedTile = clicked;
@@ -80,6 +126,16 @@ int delayFrames = 0;
     }
   }
    
+   void startGame() {
+     board = new Board(ROWS, COLS, TILE_SIZE);
+     board.initialize();
+     scoreKeeper = new Points();
+     selectedTile = null;
+     isGameOver = false;S
+     state = GameState.WAITING;
+     screenState = ScreenState.GAME;
+  }
+
   void resetGame(){
     scoreKeeper.reset();
     board.initialize();
