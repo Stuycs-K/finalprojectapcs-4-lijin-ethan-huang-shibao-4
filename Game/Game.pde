@@ -14,9 +14,11 @@ int startButtonX;
 int startButtonY;
 int startButtonW = 200; 
 int startButtonH = 80;
+PImage bg;
   
   void settings() {
     size(COLS * int(TILE_SIZE), ROWS * int(TILE_SIZE) + 80);
+    bg = loadImage("bg.png");
   }
   
   void setup() {
@@ -35,9 +37,8 @@ int startButtonH = 80;
   }
   
   void draw() {
-    background(255);
+    image(bg, 0, 0, width, height);
     board.display();
-    scoreKeeper.display(20, height - 20);
     if (state == GameState.ANIMATING) {
       delayFrames--;
       if (delayFrames <= 0) {
@@ -50,7 +51,7 @@ int startButtonH = 80;
     } 
     else if (screenState == ScreenState.GAME) {
       board.display();
-      scoreKeeper.display(width / 2, 40);
+      scoreKeeper.display(width / 2, 20);
       if (state == GameState.ANIMATING) {
         delayFrames--;
         if (delayFrames <= 0) {
@@ -68,10 +69,12 @@ int startButtonH = 80;
   }
   
   void drawMainMenu() {
-    fill(50, 150, 255);
+    image(bg, 0, 0, width, height);
+    fill(255);
     textAlign(CENTER, CENTER);
-    textSize(50);
+    textSize(60);
     text("Candy Crush", width / 2, height / 2 - 100);
+    noStroke();
     fill(0, 200, 100);
     rect(startButtonX, startButtonY, startButtonW, startButtonH, 20);
     fill(255);
@@ -131,7 +134,7 @@ int startButtonH = 80;
      board.initialize();
      scoreKeeper = new Points();
      selectedTile = null;
-     isGameOver = false;S
+     isGameOver = false;
      state = GameState.WAITING;
      screenState = ScreenState.GAME;
   }
