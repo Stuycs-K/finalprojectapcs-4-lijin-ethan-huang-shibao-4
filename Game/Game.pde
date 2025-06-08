@@ -188,9 +188,11 @@ PImage bg;
         }
       }
       if (matched) {
-        board.clearMatches();
+        int cleared;
+        cleared = board.clearMatches();
         delayFrames = 6;
         state = GameState.FALLING;
+        scoreKeeper.add(cleared*10);
         return;
         //int cleared = board.clearMatches();
         //scoreKeeper.add(cleared * 10);
