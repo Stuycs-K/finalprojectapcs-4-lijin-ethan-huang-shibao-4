@@ -289,5 +289,52 @@ class Board{
             }
         return false;
     }
-
+    
+    public Candy randomCandy(){
+      int random = (int) (Math.random() * candies.length);
+      return candies[random];
+    }
+    
+    public boolean fall(){
+      boolean moved = false;  
+      
+      for (int c = 0; c < cols; c++){
+        for (int r = rows - 1; r > 0; r--){
+          if (grid[r][c].candy == null && grid[r-1][c] != null){
+            grid[r][c].candy = grid[r-1][c].candy;
+            grid[r-1][c].candy = null;
+            moved = true;
+          }
+        }
+        
+          if(grid[0][c].candy == null){
+            grid[0][c].candy = randomCandy();
+        }
+      }
+      return moved;
+    }
+    
+    public int markAllRuns(){
+      for (int r = 0; r < rows; r++){
+        for (int c = 0; c < cols; c++){
+          canClear[r][c] = false;
+        }
+      }
+      for(int r = 0; r < rows; r++){
+        for (int c = 0; c < cols; c++){
+          if(grid[r][c] != null){
+            markRun(r,c);
+          }
+        }
+      }
+      
+      int total = 0;
+      for(int r =0; r < rows; r++){
+        for(int c = 0; c < cols; c++){
+          if(canClear[r][c]) total++;
+        }
+      }
+      return total;
+      
+    }
 }
