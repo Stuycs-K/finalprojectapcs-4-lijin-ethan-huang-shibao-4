@@ -14,6 +14,11 @@ int startButtonX;
 int startButtonY;
 int startButtonW = 200; 
 int startButtonH = 80;
+int resetButtonW = 100;
+int resetButtonH = 25;
+int resetButtonX;
+int resetButtonY;
+
 PImage bg;
   
   void settings() {
@@ -24,13 +29,16 @@ PImage bg;
   void setup() {
     startButtonX = width / 2 - startButtonW / 2;
     startButtonY = height / 2 - startButtonH / 2;
+    resetButtonX = 15;
+    resetButtonY = 12;
+    
     board = new Board(ROWS, COLS, TILE_SIZE);
     board.initialize();
     scoreKeeper = new Points();
     selectedTile = null;
     if (isGameOver) {
       textAlign(CENTER, CENTER);
-      textSize(36);
+      textSize(25);
       fill(255, 0, 0);
       text("Game Over", width / 2, height / 2);
     }
@@ -39,6 +47,7 @@ PImage bg;
   void draw() {
     image(bg, 0, 0, width, height);
     board.display();
+    
     if (state == GameState.ANIMATING) {
       delayFrames--;
       if (delayFrames <= 0) {
@@ -51,6 +60,13 @@ PImage bg;
     } 
     else if (screenState == ScreenState.GAME) {
       board.display();
+       noStroke();
+    fill(0,0,255);
+    rect(resetButtonX, resetButtonY, resetButtonW, resetButtonH, 12);
+    fill(255);
+    textSize(15);
+    textAlign(CENTER,CENTER);
+    text("reset board", resetButtonX + resetButtonW / 2, resetButtonY + resetButtonH / 2);
       scoreKeeper.display(width / 2, 20);
       if (state == GameState.ANIMATING) {
         delayFrames--;
@@ -89,6 +105,12 @@ PImage bg;
       }
       return;
     }
+    
+    if (screenState == ScreenState.GAME && mouseX >= resetButtonX && mouseX <= resetButtonX + resetButtonW && mouseY >= resetButtonY && mouseY <= resetButtonY + resetButtonH) {
+      resetGame();
+      return;
+    }
+    
     Tile clicked = board.getTile(mouseX, mouseY);
       if (clicked == null) return;
       
@@ -128,6 +150,9 @@ PImage bg;
     scoreKeeper.reset();
     board.initialize();
     selectedTile = null;
+    isGameOver = false;
+    state = GameState.WAITING;
+    delayFrames = 0;
   }
 
   void updateGame(){
