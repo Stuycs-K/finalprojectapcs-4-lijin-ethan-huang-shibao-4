@@ -36,3 +36,5 @@ Uploaded a candy crush background for the game and the main menu + start button 
 
 ### 2025-06-08 - Testing & Debugging
 Tested final game with the falling animation. Worked on debugging a NullPointerException for mousePressed during falling game state. 
+
+I believe this document actively reflects the contributions of my teammate. - Ethan
