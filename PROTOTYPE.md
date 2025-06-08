@@ -48,14 +48,14 @@ Phase 1 (5/22/2025):
 
 Phase 2 Candy and Tile class (5/27/2025):
 &nbsp;
-- Implement the candy class (Ethan)
-- Implement the tile class (Skylar)
+- Implement the candy class (Ethan) : initialize candies on the board randomly 
+- Implement the tile class (Skylar) : add select & deselect methods for matches & swaps
 
 Phase 3 Board and Points class(5/30/2025):
 &nbsp;
 
 ## Ethan:
-- Board Class:
+- Board Class: checks user input to make matches
 - implement initialize
 - implement display
 - implement swap(t1: Tile, t2: Tile)
@@ -70,7 +70,7 @@ Phase 3 Board and Points class(5/30/2025):
 - ~implement dropCandies()~
 - ~implement refillBoard()~
 - ~implement hasMoves(): boolean~
-- implement points class
+- implement Points class : keeps track of the score
 
 Phase 4 Game file ~(6/2/2025)~:
 &nbsp;
@@ -79,19 +79,23 @@ Phase 4 Game file ~(6/2/2025)~:
 - ~implement setup()~
 - ~implement draw()~
 - ~implement mousePressed()~
-- finish game class
+- finish game class : editing updateGame & mousePressed for efficiency
+- add game states
+
 &nbsp;
 ## Ethan:
 - ~implement resetGame()~
 - ~implement updateGame()~
 - ~implement gameOver(): boolean~
-- finish boardclass
+- finish boardclass: checking for matches and dropping candies
 
-phase 5 ~(6/5/2025)~ (6/9/2025):
+phase 5 ~(6/5/2025)~ (6/7/2025 - 6/9/2025):
 &nbsp;
 - double check everything to make sure everything is working
 - Skylar: ~implement win/lose conditions~
 - Ethan: ~implement end of game dialogue~
-- Sklyar: implement main screen
+- Skylar: implement main menu & background
+- Skylar: implement delay in matches for visible functionality
 - Ethan: implement candy images getting displayed on board
+- Ethan: implement falling candy animation
 
