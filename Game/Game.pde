@@ -5,7 +5,7 @@ int ROWS = 9;
 int COLS = 9;
 float TILE_SIZE = 60;
 boolean isGameOver = false;
-enum GameState { WAITING, ANIMATING, MATCHING };
+enum GameState { WAITING, ANIMATING, MATCHING, FALLING};
 GameState state = GameState.WAITING;
 int delayFrames = 0;
 ScreenState screenState = ScreenState.MENU;
@@ -18,6 +18,7 @@ int resetButtonW = 100;
 int resetButtonH = 25;
 int resetButtonX;
 int resetButtonY;
+int FALL_DELAY = 5;
 
 PImage bg;
   
@@ -48,13 +49,33 @@ PImage bg;
     image(bg, 0, 0, width, height);
     board.display();
     
-    if (state == GameState.ANIMATING) {
+    if(state == GameState.FALLING){
       delayFrames--;
-      if (delayFrames <= 0) {
-        state = GameState.MATCHING;
-        updateGame();
-      }
+      if(delayFrames <= 0){
+        boolean stillMoving = board.fall();
+        if(stillMoving){
+          delayFrames = FALL_DELAY;
+        } else{
+          int cleared = board.markAllRuns();
+          if(cleared > 0){
+            scoreKeeper.add(cleared*10);
+            board.clearMatches();
+            state = GameState.FALLING;
+            delayFrames = FALL_DELAY;
+          } else{
+            state = GameState.WAITING;
+            if(!board.hasMoves()) isGameOver = true;
+          }
+        }
+      }  
     }
+    //if (state == GameState.ANIMATING) {
+    //  delayFrames--;
+    //  if (delayFrames <= 0) {
+    //    state = GameState.MATCHING;
+    //    updateGame();
+    //  }
+    //}
     if (screenState == ScreenState.MENU) {
       drawMainMenu();
     } 
@@ -99,6 +120,7 @@ PImage bg;
   }
   
   void mousePressed() {
+    if (state == GameState.FALLING) return;
     if (screenState == ScreenState.MENU) {
       if (mouseX >= startButtonX && mouseX <= startButtonX + startButtonW && mouseY >= startButtonY && mouseY <= startButtonY + startButtonH) {
         startGame();
@@ -167,13 +189,18 @@ PImage bg;
         }
       }
       if (matched) {
-        int cleared = board.clearMatches();
-        scoreKeeper.add(cleared * 10);
-        board.dropCandies();
-        delayFrames = 15;
-        state = GameState.ANIMATING;
+        board.clearMatches();
+        delayFrames = 6;
+        state = GameState.FALLING;
         return;
+        //int cleared = board.clearMatches();
+        //scoreKeeper.add(cleared * 10);
+        //board.dropCandies();
+        //delayFrames = 15;
+        //state = GameState.ANIMATING;
+        //return;
       }
+      state = GameState.WAITING;
     }
     if (!board.hasMoves()) {
       isGameOver = true;
