@@ -89,7 +89,7 @@ PImage bg;
       }
       return;
     }
-    Tile clicked = board.getTile(mouseX, mouseY - 80);
+    Tile clicked = board.getTile(mouseX, mouseY);
       if (clicked == null) return;
       
       if (selectedTile == null){
