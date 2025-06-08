@@ -27,3 +27,9 @@ After finalizing some minor changes last night, we tested out the game in class 
 
 ### 2025-06-03 - Working on Animations
 Starting to work on animating the candies so candies fall down naturally when matches are made instead of teleporting positions. Added Game State in Game class and instance variables for delaying and animating + if statements when matches are made
+
+### 2025-06-04 - Thinking about the animation
+Helped outline in class how to show other blocks disappearing following just one block disapearing. 
+
+### 2025-06-07 - Added Background & Main Menu
+Uploaded a candy crush background for the game and the main menu + start button before initializing the game. Changed game window size to add a scorekeeper at the top of the screen. 
