@@ -34,4 +34,6 @@ edited the candy class's display method to instead display the candy crush pngs
 ### 2025-06-4 Thinking about the animation
 Helped outline in class how to show other blocks dissapearing following just one block disapearing. 
 
-### 2025-06-06 Worked on 
+### 2025-06-06 Worked on editing the prototype
+I edited the prototype to show the methods I added and also show how the timeline changed. 
+

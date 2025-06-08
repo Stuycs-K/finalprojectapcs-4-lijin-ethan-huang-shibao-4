@@ -62,30 +62,36 @@ Phase 3 Board and Points class(5/30/2025):
 - implement checkMatches(): boolean
 - implement clearMatches()
 &nbsp;
-- implement Points class
+- ~implement Points class~
+~&nbsp;
+
+## Skylar:
+- ~Board class~:
+- ~implement dropCandies()~
+- ~implement refillBoard()~
+- ~implement hasMoves(): boolean~
+- implement points class
+
+Phase 4 Game file ~(6/2/2025)~:
 &nbsp;
 
 ## Skylar:
-- Board class:
-- implement dropCandies()
-- implement refillBoard()
-- implement hasMoves(): boolean
-
-Phase 4 Game file (6/4/2025):
-&nbsp;
-
-## Skylar:
-- implement setup()
-- implement draw()
-- implement mousePressed()
+- ~implement setup()~
+- ~implement draw()~
+- ~implement mousePressed()~
+- finish game class
 &nbsp;
 ## Ethan:
-- implement resetGame()
-- implement updateGame()
-- implement gameOver(): boolean
+- ~implement resetGame()~
+- ~implement updateGame()~
+- ~implement gameOver(): boolean~
+- finish boardclass
 
-phase 5 (6/5/2025):
+phase 5 ~(6/5/2025)~ (6/9/2025):
 &nbsp;
 - double check everything to make sure everything is working
-- Skylar: implement win/lose conditions
-- Ethan: implement end of game dialogue
+- Skylar: ~implement win/lose conditions~
+- Ethan: ~implement end of game dialogue~
+- Sklyar: implement main screen
+- Ethan: implement candy images getting displayed on board
+
