@@ -5,15 +5,25 @@ int ROWS = 9;
 int COLS = 9;
 float TILE_SIZE = 60;
 boolean isGameOver = false;
-enum GameState { WAITING, ANIMATING, MATCHING }
+enum GameState { WAITING, ANIMATING, MATCHING };
 GameState state = GameState.WAITING;
 int delayFrames = 0;
+ScreenState screenState = ScreenState.MENU;
+enum ScreenState { MENU, GAME };
+int startButtonX;
+int startButtonY;
+int startButtonW = 200; 
+int startButtonH = 80;
+PImage bg;
   
   void settings() {
-    size(COLS * int(TILE_SIZE), ROWS * int(TILE_SIZE));
+    size(COLS * int(TILE_SIZE), ROWS * int(TILE_SIZE) + 80);
+    bg = loadImage("bg.png");
   }
   
   void setup() {
+    startButtonX = width / 2 - startButtonW / 2;
+    startButtonY = height / 2 - startButtonH / 2;
     board = new Board(ROWS, COLS, TILE_SIZE);
     board.initialize();
     scoreKeeper = new Points();
@@ -27,9 +37,8 @@ int delayFrames = 0;
   }
   
   void draw() {
-    background(255);
+    image(bg, 0, 0, width, height);
     board.display();
-    scoreKeeper.display(20, height - 20);
     if (state == GameState.ANIMATING) {
       delayFrames--;
       if (delayFrames <= 0) {
@@ -37,21 +46,50 @@ int delayFrames = 0;
         updateGame();
       }
     }
+    if (screenState == ScreenState.MENU) {
+      drawMainMenu();
+    } 
+    else if (screenState == ScreenState.GAME) {
+      board.display();
+      scoreKeeper.display(width / 2, 20);
+      if (state == GameState.ANIMATING) {
+        delayFrames--;
+        if (delayFrames <= 0) {
+          state = GameState.MATCHING;
+          updateGame();
+        }
+      }
+      if (isGameOver) {
+        fill(255, 0, 0);
+        textAlign(CENTER, CENTER);
+        textSize(36);
+        text("Game Over", width / 2, height / 2);
+      }
+    }
+  }
+  
+  void drawMainMenu() {
+    image(bg, 0, 0, width, height);
+    fill(255);
+    textAlign(CENTER, CENTER);
+    textSize(60);
+    text("Candy Crush", width / 2, height / 2 - 100);
+    noStroke();
+    fill(0, 200, 100);
+    rect(startButtonX, startButtonY, startButtonW, startButtonH, 20);
+    fill(255);
+    textSize(32);
+    text("Start", width / 2, height / 2);
   }
   
   void mousePressed() {
-    //int col = int(mouseX / TILE_SIZE);
-    //int row = int(mouseY / TILE_SIZE);
-    //if (row >= board.rows || col >= board.cols) {
-    //  return;
-    //}
-    Tile clicked = board.getTile(mouseX, mouseY);
-    //if (clicked != null) {
-    //  if (selectedTile == null) {
-    //    selectedTile = clicked;
-    //    selectedTile.select();
-    //  }
-    //else {
+    if (screenState == ScreenState.MENU) {
+      if (mouseX >= startButtonX && mouseX <= startButtonX + startButtonW && mouseY >= startButtonY && mouseY <= startButtonY + startButtonH) {
+        startGame();
+      }
+      return;
+    }
+    Tile clicked = board.getTile(mouseX, mouseY - 80);
       if (clicked == null) return;
       
       if (selectedTile == null){
@@ -63,10 +101,6 @@ int delayFrames = 0;
         int c1 = selectedTile.getCol(board.tileSize, board.boardX);
         int r2 = clicked.getRow(board.tileSize, board.boardY);
         int c2 = clicked.getCol(board.tileSize, board.boardX);
-        //board.swapCandies(selectedTile, clicked);
-        //if (board.checkMatches(r1, c1, r2, c2)) {
-        //  updateGame();
-        //} else {
           if (abs(r1-r2) + abs(c1-c2) == 1){
           board.swapCandies(selectedTile, clicked);
             if(board.checkMatches(r1,c1,r2,c2)){
@@ -80,6 +114,16 @@ int delayFrames = 0;
     }
   }
    
+   void startGame() {
+     board = new Board(ROWS, COLS, TILE_SIZE);
+     board.initialize();
+     scoreKeeper = new Points();
+     selectedTile = null;
+     isGameOver = false;
+     state = GameState.WAITING;
+     screenState = ScreenState.GAME;
+  }
+
   void resetGame(){
     scoreKeeper.reset();
     board.initialize();
