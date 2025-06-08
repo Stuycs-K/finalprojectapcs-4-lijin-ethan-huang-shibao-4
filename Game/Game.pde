@@ -120,6 +120,7 @@ PImage bg;
   }
   
   void mousePressed() {
+    if (state == GameState.FALLING) return;
     if (screenState == ScreenState.MENU) {
       if (mouseX >= startButtonX && mouseX <= startButtonX + startButtonW && mouseY >= startButtonY && mouseY <= startButtonY + startButtonH) {
         startGame();
