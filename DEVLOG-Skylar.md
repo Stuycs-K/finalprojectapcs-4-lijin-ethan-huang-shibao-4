@@ -33,3 +33,6 @@ Helped outline in class how to show other blocks disappearing following just one
 
 ### 2025-06-07 - Added Background & Main Menu
 Uploaded a candy crush background for the game and the main menu + start button before initializing the game. Changed game window size to add a scorekeeper at the top of the screen. 
+
+### 2025-06-08 - Testing & Debugging
+Tested final game with the falling animation. Worked on debugging a NullPointerException for mousePressed during falling game state. 
