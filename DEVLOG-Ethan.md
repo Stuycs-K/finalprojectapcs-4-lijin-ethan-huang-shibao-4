@@ -37,3 +37,6 @@ Helped outline in class how to show other blocks dissapearing following just one
 ### 2025-06-06 Worked on editing the prototype
 I edited the prototype to show the methods I added and also show how the timeline changed. 
 
+
+
+I believe this document actively reflects the contributions of my teammate. - Skylar

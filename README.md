@@ -5,4 +5,4 @@ Candy Crush: The player has to swap different pieces of candy to make consecutiv
 
 # Intended usage:
 
-The player will click on two consecutive candies on the board in order for them to switch. If this is a valid match (conesecutives threes or more of the same candy), the candies will be eliminated and the board will be updated as more candies drop down to fill the gap. If this is not a valid match, nothing will occur. 
+The player will click on two consecutive candies on the board in order for them to switch. If this is a valid match (conesecutives threes or more of the same candy), the candies will be eliminated and the board will be updated as more candies drop down to fill the gap. If this is not a valid match, nothing will occur. In addition, if at any point, the player wants to restart, they can press the restart button on the left corner of the screen to reset the board and score. 
