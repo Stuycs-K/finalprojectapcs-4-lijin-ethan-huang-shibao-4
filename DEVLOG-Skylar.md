@@ -35,6 +35,6 @@ Helped outline in class how to show other blocks disappearing following just one
 Uploaded a candy crush background for the game and the main menu + start button before initializing the game. Changed game window size to add a scorekeeper at the top of the screen. 
 
 ### 2025-06-08 - Testing & Debugging
-Tested final game with the falling animation. Worked on debugging a NullPointerException for mousePressed during falling game state. 
+Tested final game with the falling animation. Worked on debugging a NullPointerException for mousePressed during falling game state. Added high score keeper. Edited UML diagram to accurately reflect changes.
 
 I believe this document actively reflects the contributions of my teammate. - Ethan

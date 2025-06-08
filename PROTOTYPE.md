@@ -15,8 +15,10 @@ We'll be using classes, constructors to initialize candies, and methods to displ
 
 # Project Design
 ![Old UML Diagram](classes.png?raw=true "Classes" )
-Old UML Diagram above (Please refer to the new UML diagram below)
-![New UML Diagram](classes2.png?raw=true "Classes" )
+![Old2 UML Diagram](classes2.png?raw=true "Classes" )
+Old UML Diagrams above (Please refer to the new UML diagram below)
+![New UML Diagram](finaluml.png?raw=true "Classes" )
+
 Game contains one Board and one Points object.
 Board is a grid (Tile[][]) where each Tile contains a Candy.
 Candy objects are created with random colors and types (normal, striped, etc.).

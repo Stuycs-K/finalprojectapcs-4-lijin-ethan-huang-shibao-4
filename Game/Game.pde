@@ -19,7 +19,7 @@ int resetButtonH = 25;
 int resetButtonX;
 int resetButtonY;
 int FALL_DELAY = 5;
-
+int highScore = 0;
 PImage bg;
   
   void settings() {
@@ -89,6 +89,10 @@ PImage bg;
     textAlign(CENTER,CENTER);
     text("reset board", resetButtonX + resetButtonW / 2, resetButtonY + resetButtonH / 2);
       scoreKeeper.display(width / 2, 20);
+      fill(255);
+      textAlign(RIGHT, CENTER);
+      textSize(16);
+      text("High Score: " + highScore, width - 15, 20);
       if (state == GameState.ANIMATING) {
         delayFrames--;
         if (delayFrames <= 0) {
@@ -194,6 +198,9 @@ PImage bg;
         delayFrames = 6;
         state = GameState.FALLING;
         scoreKeeper.add(cleared*10);
+        if (scoreKeeper.getScore() > highScore) {
+          highScore = scoreKeeper.getScore();
+        }
         return;
         //int cleared = board.clearMatches();
         //scoreKeeper.add(cleared * 10);
