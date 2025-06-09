@@ -21,7 +21,7 @@ Old UML Diagrams above (Please refer to the new UML diagram below)
 
 Game contains one Board and one Points object.
 Board is a grid (Tile[][]) where each Tile contains a Candy.
-Candy objects are created with random colors and types (normal, striped, etc.).
+Candy objects are created with random colors.
 Points is updated based on match types (3, 4, 5 combos).
 
 Board.checkMatches()
